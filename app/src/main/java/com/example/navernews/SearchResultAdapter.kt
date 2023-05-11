@@ -7,7 +7,7 @@ import com.example.navernews.dataModel.NewsList
 import com.example.navernews.databinding.NewsSearchResultBinding
 
 class SearchResultAdapter: RecyclerView.Adapter<SearchResultAdapter.ViewHolder>() {
-    private var newsDatas = listOf<NewsList.NewsData>()
+    private var newsDatas = ArrayList<NewsList.NewsData>()
 
     inner class ViewHolder(private val binding: NewsSearchResultBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(i: Int){
@@ -28,7 +28,7 @@ class SearchResultAdapter: RecyclerView.Adapter<SearchResultAdapter.ViewHolder>(
 
     override fun getItemCount() = newsDatas.size
 
-    fun setDatas(datas: List<NewsList.NewsData>) {
+    fun setDatas(datas: ArrayList<NewsList.NewsData>) {
         newsDatas = datas
     }
 }
