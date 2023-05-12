@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = SearchResultAdapter()
         val searchResult = findViewById<RecyclerView>(R.id.recycler)
 
-        viewModel.getNewsDatas().observe(this, {
+        viewModel.getNewsDatas.observe(this, {
             if (it != null) {
                 Log.d("TestLog", it.toString())
                 adapter.setDatas(it.items)

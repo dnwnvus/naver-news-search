@@ -1,6 +1,7 @@
 package com.example.navernews
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.navernews.dataModel.NewsList
@@ -12,9 +13,7 @@ import io.reactivex.disposables.Disposable
 class MainViewModel: ViewModel() {
     private val newsDatas = MutableLiveData<NewsList>()
 
-    fun getNewsDatas(): MutableLiveData<NewsList> {
-        return newsDatas
-    }
+    val getNewsDatas: LiveData<NewsList> get() = newsDatas
 
     private val repo = Repository()
 
@@ -25,7 +24,7 @@ class MainViewModel: ViewModel() {
 
             override fun onSuccess(newsList: NewsList) {
                 Log.d("TESTLOG", "SUCCESS")
-                newsDatas.value = newsList
+                newsDatas.postValue(newsList)
             }
 
             override fun onError(t: Throwable) {
