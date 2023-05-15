@@ -11,12 +11,10 @@ class Repository {
     private val api = APIClient.retrofit.create(NaverAPI::class.java)
 
     fun getSearchNewsList(
-        ClientId: String,
-        ClientSecret: String,
         text: String,
         start: Int,
         display: Int): Single<NewsList> = api
-            .getSearchNews(ClientId, ClientSecret, text, start, display)
+            .getSearchNews(text, start, display)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 }

@@ -1,6 +1,7 @@
 package com.example.navernews
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -9,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.navernews.databinding.ActivityMainBinding
+import com.example.navernews.sharedPreference.NaverNews
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -35,9 +37,13 @@ class MainActivity : AppCompatActivity() {
         })
 
         binding.etButton.setOnClickListener {
-            Toast.makeText(applicationContext, binding.etSearch.text.toString(), Toast.LENGTH_SHORT).show()
+            val searchText = binding.etSearch.text.toString()
+
+            NaverNews.prefs.setString("searchText", searchText)
+
             viewModel.searchNews(binding.etSearch.text.toString())
-            binding.etSearch.setText("")
+
+            Toast.makeText(this, searchText, Toast.LENGTH_SHORT).show()
         }
 
         binding.recycler.apply {

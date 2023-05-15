@@ -18,7 +18,7 @@ class MainViewModel: ViewModel() {
     private val repo = Repository()
 
     fun searchNews(text: String) {
-        repo.getSearchNewsList(BaseUrl.Client_ID, BaseUrl.Client_Secret, text, 1, 10).subscribe(object: SingleObserver<NewsList> {
+        repo.getSearchNewsList(text, 1, 10).subscribe(object: SingleObserver<NewsList> {
             override fun onSubscribe(d: Disposable) {
             }
 
