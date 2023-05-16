@@ -39,9 +39,10 @@ class MainActivity : AppCompatActivity() {
         binding.etButton.setOnClickListener {
             val searchText = binding.etSearch.text.toString()
 
-            NaverNews.prefs.setString("searchText", searchText)
+            // data/data/NaverNews/prefs
+            NaverNews.prefs.setString("searchedText", searchText)
 
-            viewModel.searchNews(binding.etSearch.text.toString())
+            viewModel.searchNews(searchText)
 
             Toast.makeText(this, searchText, Toast.LENGTH_SHORT).show()
         }

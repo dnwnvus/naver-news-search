@@ -2,6 +2,7 @@ package com.example.navernews
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.text.parseAsHtml
 import androidx.recyclerview.widget.RecyclerView
 import com.example.navernews.dataModel.NewsList
 import com.example.navernews.databinding.NewsSearchResultBinding
@@ -11,8 +12,8 @@ class SearchResultAdapter: RecyclerView.Adapter<SearchResultAdapter.ViewHolder>(
 
     inner class ViewHolder(private val binding: NewsSearchResultBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(i: Int){
-            binding.title.text = newsDatas[i].title
-            binding.description.text = newsDatas[i].description
+            binding.title.text = newsDatas[i].title.parseAsHtml()
+            binding.description.text = newsDatas[i].description.parseAsHtml()
         }
     }
 

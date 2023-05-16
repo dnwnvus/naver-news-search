@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 
 class PreferenceUtil(context: Context) {
-    private val prefs: SharedPreferences = context.getSharedPreferences("pref", 0)
+    private val prefs: SharedPreferences = context.getSharedPreferences("prefs", 0)
 
     fun getString(key: String, value: String): String {
         return prefs.getString(key, value).toString()
